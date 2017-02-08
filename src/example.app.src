@@ -1,0 +1,14 @@
+{application, example,
+  [
+    {description, "Erlang GraphQL Example"},
+    {vsn, "0.0.1"},
+    {registered, [example]},
+    {applications, [
+      kernel,
+      stdlib,
+      cowboy
+    ]},
+    {mod, { example_app, []}},
+    {env, []},
+    {start_phases, []}
+  ]}.
