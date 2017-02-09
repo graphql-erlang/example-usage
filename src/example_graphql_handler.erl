@@ -11,8 +11,10 @@ init(_Type, Req, _Opts) ->
 handle(Req, State)->
   {ok, Document, _} = cowboy_req:body(Req),
 
-  Schema = graphql_test_schema:schema_root(),
-  Response = graphql:execute(Schema, Document, State, #{}),
+  Schema = example_schema:schema(),
+
+  % pass State as context
+  Response = graphql:execute(Schema, Document, #{}, State),
 
   {ok, Reply} = cowboy_req:reply(200, [
     {<<"content-type">>, <<"application/json">>}
