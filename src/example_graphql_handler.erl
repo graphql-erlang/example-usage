@@ -9,7 +9,12 @@ init(_Type, Req, _Opts) ->
   }}.
 
 handle(Req, State)->
-  {ok, Document, _} = cowboy_req:body(Req),
+  {ok, Body, _} = cowboy_req:body(Req),
+
+  #{
+    <<"query">> := Document,
+    <<"variables">> := Variables
+  } = jsx:decode(Body, [return_maps]),
 
   Schema = example_schema:schema(),
 

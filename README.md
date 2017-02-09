@@ -7,7 +7,7 @@ Just run:
     rebar3 auto
 ```
 
-Now you can use postman or whatever for send requests to graphql server at http://127.0.0.1:8088/graphql
+Now you can use included Graph*i*QL client at http://127.0.0.1:8088
 
 You can find schemas at src/graphql. RootObject in example_schema.erl
 
