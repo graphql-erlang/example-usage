@@ -11,15 +11,15 @@ init(_Type, Req, _Opts) ->
 handle(Req, State)->
   {ok, Body, _} = cowboy_req:body(Req),
 
-  #{
-    <<"query">> := Document,
-    <<"variables">> := Variables
-  } = jsx:decode(Body, [return_maps]),
+  BodyJson = jsx:decode(Body, [return_maps]),
+
+  Document = maps:get(<<"query">>, BodyJson),
+  Variables = maps:get(<<"variables">>, BodyJson, #{}),
 
   Schema = example_schema:schema(),
 
   % pass State as context
-  Response = graphql:execute(Schema, Document, #{}, State),
+  Response = graphql:execute(Schema, Document, Variables, #{}, State),
 
   {ok, Reply} = cowboy_req:reply(200, [
     {<<"content-type">>, <<"application/json">>}
