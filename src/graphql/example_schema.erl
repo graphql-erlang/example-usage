@@ -20,5 +20,10 @@ schema() -> graphql:schema(#{
       % pass args down as object
       resolver => fun(_, Args) -> Args end
     }
-  })
+  }),
+
+  enums => #{
+    <<"TEN">> => 10,
+    <<"TWO">> => 2
+  }
 }).

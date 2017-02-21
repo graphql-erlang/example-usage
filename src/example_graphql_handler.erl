@@ -14,7 +14,7 @@ handle(Req, State)->
   BodyJson = jsx:decode(Body, [return_maps]),
 
   Document = maps:get(<<"query">>, BodyJson),
-  Variables = maps:get(<<"variables">>, BodyJson, #{}),
+  Variables = jsx:decode(maps:get(<<"variables">>, BodyJson, <<"{}">>), [return_maps]),
 
   Schema = example_schema:schema(),
 
