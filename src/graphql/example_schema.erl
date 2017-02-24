@@ -8,7 +8,7 @@
 
 
 schema() -> graphql:schema(#{
-  query => graphql:objectType(<<"RootSchema">>, <<"Graphql entrypoint">>, #{
+  query => graphql:objectType(<<"QueryRoot">>, <<"Graphql entrypoint">>, #{
     <<"calculator">> => #{
       type => {object, fun example_calculator:calculator/0},
       description => <<"Because we can!">>,
