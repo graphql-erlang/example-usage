@@ -1,5 +1,5 @@
 -module(example_calculator).
--author("mrchex").
+-include("graphql/include/types.hrl").
 
 %% API
 -export([
@@ -8,25 +8,25 @@
 
 calculator() -> graphql:objectType(<<"Calculator">>, <<"Simple calculator">>, #{
   <<"plus">> => #{
-    type => integer,
+    type => ?INT,
     description => <<"A + B">>,
     resolver => fun (#{<<"a">> := A, <<"b">> := B}, _)-> A + B end
   },
 
   <<"minus">> => #{
-    type => integer,
+    type => ?INT,
     description => <<"A - B">>,
     resolver => fun (#{<<"a">> := A, <<"b">> := B}, _)-> A - B end
   },
 
   <<"devide">> => #{
-    type => integer,
+    type => ?FLOAT,
     description => <<"A / B">>,
     resolver => fun (#{<<"a">> := A, <<"b">> := B}, _)-> A / B end
   },
 
   <<"multiply">> => #{
-    type => integer,
+    type => ?INT,
     description => <<"A * B">>,
     resolver => fun (#{<<"a">> := A, <<"b">> := B}, _)-> A * B end
   }

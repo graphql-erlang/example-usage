@@ -14,12 +14,14 @@ handle(Req, State)->
   BodyJson = jsx:decode(Body, [return_maps]),
 
   Document = maps:get(<<"query">>, BodyJson),
-  Variables = jsx:decode(maps:get(<<"variables">>, BodyJson, <<"{}">>), [return_maps]),
+  Variables = maps:get(<<"variables">>, BodyJson, #{}),
 
   Schema = example_schema:schema(),
 
   % pass State as context
   Response = graphql:execute(Schema, Document, Variables, #{}, State),
+
+  io:format("RESPONCE:~p~n", [Response]),
 
   {ok, Reply} = cowboy_req:reply(200, [
     {<<"content-type">>, <<"application/json">>}
