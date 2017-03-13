@@ -1,12 +1,12 @@
 -module(example_calculator).
--include("graphql/include/types.hrl").
+-include_lib("graphql/include/types.hrl").
 
 %% API
 -export([
   calculator/0
 ]).
 
-calculator() -> graphql:objectType(<<"Calculator">>, <<"Simple calculator">>, #{
+calculator() -> graphql:objectType(<<"Calculator_ololo">>, <<"Simple calculator">>, #{
   <<"plus">> => #{
     type => ?INT,
     description => <<"A + B">>,

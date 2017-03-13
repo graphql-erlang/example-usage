@@ -38,6 +38,32 @@ schema() -> graphql:schema(#{
         ])}
       },
       resolver => fun(_, #{<<"fun">> := A, <<"inline">> := B}) -> A + B end
+    },
+
+    <<"search">> => #{
+      type => ?LIST(fun example_search:union/0),
+      description => <<"Test Unions">>,
+      resolver => fun() -> [
+        {fun example_search:user/0, #{<<"username">> => <<"Union">>}},
+        {fun example_search:post/0, #{<<"title">> => <<"Post1">>, <<"text">> => <<"text1">>}},
+        {fun example_search:user/0, #{<<"username">> => <<"Union2">>}},
+        {fun example_search:post/0, #{<<"title">> => <<"Post2">>, <<"text">> => <<"text2">>}},
+        {fun example_search:post/0, #{<<"title">> => <<"Post3">>, <<"text">> => <<"text3">>}},
+        {fun example_search:comment/0, #{<<"text">> => <<"comment">>}}
+      ] end
+    }
+  }),
+
+  mutation => graphql:objectType(<<"MutationRoot">>, <<"Test mutations">>, #{
+    <<"store">> => #{
+      type => fun example_store:type/0,
+      resolver => fun(_,_, Context) ->
+        EtsName = example,
+        ets:new(EtsName, [set, named_table]),
+        {#{}, Context#{
+          ets_name => EtsName
+        }}
+      end
     }
   })
 }).

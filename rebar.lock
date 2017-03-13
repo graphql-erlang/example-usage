@@ -1,16 +1,14 @@
 {"1.1.0",
 [{<<"cowboy">>,{pkg,<<"cowboy">>,<<"1.1.2">>},0},
  {<<"cowlib">>,{pkg,<<"cowlib">>,<<"1.0.2">>},1},
- {<<"graphql_parser">>,
-  {git,"https://github.com/graphql-erlang/graphql_parser.git",
-       {ref,"1167209de10e9aa3a7cc34c607c949cc6401ea6f"}},
-  1},
+ {<<"graphql">>,{pkg,<<"graphql_erlang">>,<<"0.2.7">>},0},
  {<<"jsx">>,{pkg,<<"jsx">>,<<"2.8.1">>},0},
  {<<"ranch">>,{pkg,<<"ranch">>,<<"1.3.2">>},1}]}.
 [
 {pkg_hash,[
  {<<"cowboy">>, <<"61AC29EA970389A88ECA5A65601460162D370A70018AFE6F949A29DCA91F3BB0">>},
  {<<"cowlib">>, <<"9D769A1D062C9C3AC753096F868CA121E2730B9A377DE23DEC0F7E08B1DF84EE">>},
+ {<<"graphql">>, <<"068A465C7725AC62073FC668F1AD18FA7828C58609CF58775E54243F63EDBCE2">>},
  {<<"jsx">>, <<"1453B4EB3615ACB3E2CD0A105D27E6761E2ED2E501AC0B390F5BBEC497669846">>},
  {<<"ranch">>, <<"E4965A144DC9FBE70E5C077C65E73C57165416A901BD02EA899CFD95AA890986">>}]}
 ].
