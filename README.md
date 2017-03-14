@@ -1,7 +1,5 @@
 # Erlang GraphQL Example
 
-IMPORTANT: Need installed libgraphqlparser
-
 Just run:
 ```
     rebar3 auto
